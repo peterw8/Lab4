@@ -73,7 +73,35 @@ public class Colosseum {
      */
     public static Pokemon buildPokemon() {
         Pokemon tempPokemon = new Pokemon();
+        System.out.println("Please name your Pokemon:");
+        String name = myScan.nextLine();
+        System.out.println("How many hit points will it have? (1-50)");
+        int hp = myScan.nextInt();
+        while (!(hp >= 1 && hp <= MAX_HIT_POINTS)){
+            System.out.println("Sorry. Hit points must be between 1 and 50, please enter another one");
+            hp = myScan.nextInt();
+        }
+        System.out.println("Split fifty points between attack level and defense level");
+        System.out.println("Enter attack (1-49)");
+        int attLevel = myScan.nextInt();
+        int maxDef = MAX_HIT_POINTS - attLevel;
+
+        System.out.println("Enter defense (1 - " + maxDef + ")");
+        int defLevel = myScan.nextInt();
+        while (!(attLevel >= 1 && attLevel < MAX_HIT_POINTS)){
+            System.out.println("Sorry. Attack must be between 1 and 49, please enter another one");
+            attLevel = myScan.nextInt();
+
+        }
+        while (!(defLevel >= 1 && defLevel <= MAX_HIT_POINTS - attLevel)){
+            System.out.println("Sorry. Defense must be between 1 and " + attLevel + ", please enter another one");
+            defLevel = myScan.nextInt();
+
+        }
         return tempPokemon;
+
+
+
     }
 
     /**
@@ -92,7 +120,6 @@ public class Colosseum {
     public static void printWhoIsAhead() {
         System.out.println("Implement me!");
     }
-
     /**
      * Prints out the overall winner of the battle.
      * <p>
